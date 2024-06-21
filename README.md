@@ -177,4 +177,15 @@ Recommended usage: Local, Dynamic data.
 
 This approach is valuable when the data changes fairly frequently and/or when the cost of making decisions using stale data is high. It works especially well when the external data is local to the system asking for authorization decisions. It can work in the case of remote data as well, but there is more coupling of the system to OPA
 
+### Bundle API
 
+When external data changes infrequently and can reasonably be stored in memory all at once, you can replicate that data in bulk via OPA’s bundle feature. The bundle feature periodically downloads policy bundles from a centralized server, which can include data as well as policy. Every time OPA gets updated policies, it gets updated data too. You must implement the bundle server and integrate your external data into the bundle server–OPA does NOT help with that–but once it is done, OPA will happily pull the data (and policies) out of your bundle server.
+
+
+Three things happen independently with this kind of data integration.
+
+A. OPA-enabled software system asks OPA for policy decisions
+B. OPA downloads new policy bundles including external data
+C. Bundle server replicates data from source of truth
+
+Recommended usage: Static, Medium-sized data
