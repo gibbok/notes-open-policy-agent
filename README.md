@@ -123,3 +123,18 @@ allow_user if user_is_admin
 user_is_admin if "admin" in data.user_roles[input.user]
 ```
 
+## What is Rego?
+
+It is a  query language insiped by Datalog.
+
+Rego queries are assertions on data stored in OPA. These queries can be used to define policies that enumerate instances of data that violate the expected state of the system.
+
+Rego focuses on providing powerful support for referencing nested documents and ensuring that queries are correct and unambiguous.
+
+## How to test policies?
+
+OPA also gives you a framework that you can use to write tests for your policies.
+
+## Bundle API
+When external data changes infrequently and can reasonably be stored in memory all at once, you can replicate that data in bulk via OPA’s bundle feature. The bundle feature periodically downloads policy bundles from a centralized server, which can include data as well as policy. Every time OPA gets updated policies, it gets updated data too. You must implement the bundle server and integrate your external data into the bundle server–OPA does NOT help with that–but once it is done, OPA will happily pull the data (and policies) out of your bundle server.
+
