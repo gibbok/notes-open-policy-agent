@@ -68,3 +68,5 @@ Location control: Policies themselves control where virtual documents are stored
 Rego lets you refer to both base and virtual documents through a global variable called data. Similarly, OPA lets you query for both base and virtual documents via the /v1/data HTTP API [3]. This is why queries for just data (or data.foo or data.foo.bar, etc.) return the combination of base and virtual documents located under that path.
 
 Since base documents come from outside of OPA, their location under data is controlled by the software doing the loading. On the other hand, the location of virtual documents under data is controlled by policies themselves using the package directive in the language.
+
+Base documents can be pushed or pulled into OPA asynchronously by replicating data into OPA when the state of the world changes. This can happen periodically or when some event (like a database change notification) occurs. Base documents loaded asynchronously are always accessed under the data global variable. On the other hand, base documents can also be pushed or pulled into OPA synchronously when your software queries OPA for policy decisions
