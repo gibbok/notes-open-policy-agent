@@ -109,7 +109,7 @@ Data:
 Rego:
 
 ```
-package app.rbac
+package app.test
 
 import rego.v1
 
