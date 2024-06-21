@@ -204,3 +204,7 @@ During evaluation OPA asks the external data source for additional information
 Recommended usage: Highly Dynamic or Large-sized data
 
 The downside to pulling data on demand is reduced performance and availability because of the network, which can be mitigated via caching. In the input case, caching is under the control of the OPA-enabled service and can therefore be tailored to fit the properties of the data. In the http.send case, caching is largely under the control of the remote service that sets HTTP response headers to indicate how long the response can be cached for. It is crucial in this approach for the OPA-enabled service to handle the case when OPA returns no decision.
+
+<img width="1376" alt="Screenshot 2024-06-21 at 3 45 16 PM" src="https://github.com/gibbok/notes-open-policy-agent/assets/17195702/74afe2cd-3e04-4a9b-b3c8-c7b155c2cf75">
+
+
