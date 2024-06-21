@@ -138,3 +138,13 @@ OPA also gives you a framework that you can use to write tests for your policies
 ## Bundle API
 When external data changes infrequently and can reasonably be stored in memory all at once, you can replicate that data in bulk via OPA’s bundle feature. The bundle feature periodically downloads policy bundles from a centralized server, which can include data as well as policy. Every time OPA gets updated policies, it gets updated data too. You must implement the bundle server and integrate your external data into the bundle server–OPA does NOT help with that–but once it is done, OPA will happily pull the data (and policies) out of your bundle server.
 
+## Evaluating Policies
+OPA supports different ways to evaluate policies.
+
+- The REST API returns decisions as JSON over HTTP.
+- The Go API (GoDoc) returns decisions as simple Go types (bool, string, map[string]interface{}, etc.)
+- WebAssembly compiles Rego policies into Wasm instructions so they can be embedded and evaluated by any WebAssembly runtime
+- Custom compilers and evaluators may be written to parse evaluation plans in the low-level Intermediate Representation format, which can be emitted by the opa build command
+- The SDK provides high-level APIs for obtaining the output of query evaluation as simple Go types (bool, string, map[string]interface{}, etc.)
+
+
