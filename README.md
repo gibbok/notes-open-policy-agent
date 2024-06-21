@@ -189,3 +189,16 @@ B. OPA downloads new policy bundles including external data
 C. Bundle server replicates data from source of truth
 
 Recommended usage: Static, Medium-sized data
+
+### Pull Data during Evaluation
+
+OPA includes functionality for reaching out to external servers during evaluation. This functionality handles those cases where there is too much data to synchronize into OPA, JWTs are ineffective, or policy requires information that must be as up to date as possible.
+
+That functionality is implemented using built-in functions such as http.send
+
+The key difference here is that every decision requires contacting the external data source. If that service or the network connection is slow or unavailable, OPA may not be able to return a decision.
+
+OPA-enabled service asks OPA for a decision
+During evaluation OPA asks the external data source for additional information
+
+Recommended usage: Highly Dynamic or Large-sized data
