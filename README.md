@@ -69,4 +69,7 @@ Rego lets you refer to both base and virtual documents through a global variable
 
 Since base documents come from outside of OPA, their location under data is controlled by the software doing the loading. On the other hand, the location of virtual documents under data is controlled by policies themselves using the package directive in the language.
 
-Base documents can be pushed or pulled into OPA asynchronously by replicating data into OPA when the state of the world changes. This can happen periodically or when some event (like a database change notification) occurs. Base documents loaded asynchronously are always accessed under the data global variable. On the other hand, base documents can also be pushed or pulled into OPA synchronously when your software queries OPA for policy decisions
+Base documents can be pushed or pulled into OPA asynchronously by replicating data into OPA when the state of the world changes. This can happen periodically or when some event (like a database change notification) occurs. Base documents loaded asynchronously are always accessed under the data global variable. On the other hand, base documents can also be pushed or pulled into OPA synchronously when your software queries OPA for policy decisions.
+
+
+Data loaded asynchronously into OPA is cached in-memory so that it can be read efficiently during policy evaluation. Similarly, policies are also cached in-memory to ensure high-performance and high-availability. Data pulled synchronously can also be cached in-memory. For more information on loading external data into OPA, including tradeoffs, see the External Data page.
