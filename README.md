@@ -60,8 +60,11 @@ However, your policies can also make decisions based on each other. Policies alm
 
 In Open Policy Agent (OPA), virtual documents are data structures that are  computed by the policies themselves, as opposed to being loaded from external sources [4].  They essentially represent the outcome of evaluating OPA rules.
 
- Dynamically generated: Unlike base documents (which contain pre-loaded data), virtual documents are created on-the-fly during policy evaluation [1].
+Dynamically generated: Unlike base documents (which contain pre-loaded data), virtual documents are created on-the-fly during policy evaluation [1].
 Structure: They can hold the same kind of information as base documents, including numbers, strings, lists, and maps [4].
 Access: You can reference virtual documents using the same dot/bracket notation as base documents, making it easy to integrate them into your policies [4].
 Location control: Policies themselves control where virtual documents are stored within the data tree using the package directive in the Rego policy language [4].
 
+Rego lets you refer to both base and virtual documents through a global variable called data. Similarly, OPA lets you query for both base and virtual documents via the /v1/data HTTP API [3]. This is why queries for just data (or data.foo or data.foo.bar, etc.) return the combination of base and virtual documents located under that path.
+
+Since base documents come from outside of OPA, their location under data is controlled by the software doing the loading. On the other hand, the location of virtual documents under data is controlled by policies themselves using the package directive in the language.
