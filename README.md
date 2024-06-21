@@ -163,10 +163,18 @@ It extract from the jwt token information and evaluate against OPA policy hardco
 - The OPA-enabled software system includes that token as part of the usual input to OPA.
 - OPA decodes the JWT token and uses the contents to make policy decisions.
 
+### Overload input
 
+Often policies require external data that’s not available to the authentication system, ruling out JWTs. The calling system can include external data as part of input
 
+Instead of relying on that external source, the system requesting OPA's decision (like an app) can directly provide the relevant data along with the request. It's like giving OPA all the ingredients it needs to cook up a decision, without it having to look for them itself.
 
+- OPA-enabled software gathers relevant metadata (and caches it for subsequent requests)
+- OPA-enabled software sends input to OPA including the external data
+- Policy makes decisions based on external data included in input
 
+Recommended usage: Local, Dynamic data.
 
+This approach is valuable when the data changes fairly frequently and/or when the cost of making decisions using stale data is high. It works especially well when the external data is local to the system asking for authorization decisions. It can work in the case of remote data as well, but there is more coupling of the system to OPA
 
 
