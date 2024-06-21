@@ -210,3 +210,7 @@ The downside to pulling data on demand is reduced performance and availability b
 <img width="1376" alt="Screenshot 2024-06-21 at 3 45 16 PM" src="https://github.com/gibbok/notes-open-policy-agent/assets/17195702/74afe2cd-3e04-4a9b-b3c8-c7b155c2cf75">
 
 
+## Notes:
+
+- When run as a server and configured accordingly, OPA will emit spans to an OpenTelemetry collector via gRPC.
+- OPA exposes an HTTP endpoint that can be used to collect performance metrics for all API calls. The Prometheus endpoint is enabled by default when you run OPA as a server.
