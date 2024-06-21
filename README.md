@@ -15,3 +15,5 @@ OPA generates policy decisions by evaluating the query input against policies an
 - Which times of day the system can be accessed at.
 
 Policy decisions are not limited to simple yes/no or allow/deny answers. Like query inputs, your policies can generate arbitrary structured data as output.
+
+OPA policies are expressed in a high-level declarative language called Rego. Rego (pronounced “ray-go”) is purpose-built for expressing policies over complex hierarchical data structures.
