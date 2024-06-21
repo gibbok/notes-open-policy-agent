@@ -73,3 +73,53 @@ Base documents can be pushed or pulled into OPA asynchronously by replicating da
 
 
 Data loaded asynchronously into OPA is cached in-memory so that it can be read efficiently during policy evaluation. Similarly, policies are also cached in-memory to ensure high-performance and high-availability. Data pulled synchronously can also be cached in-memory. For more information on loading external data into OPA, including tradeoffs, see the External Data page.
+
+
+Simple example:
+
+https://play.openpolicyagent.org/p/FuRtmg698k
+
+Input:
+
+```json
+{
+    "user": "bob"
+}
+```
+
+Data:
+
+```json
+{
+    "user_roles": {
+        "alice": [
+            "admin"
+        ],
+        "bob": [
+            "employee",
+            "billing"
+        ],
+        "eve": [
+            "customer"
+        ]
+    }
+}
+```
+
+Rego:
+
+```
+package app.rbac
+
+import rego.v1
+
+# By default, deny requests.
+default allow := false
+
+# Allow admins to do anything.
+allow if user_is_admin
+
+# user_is_admin is true if "admin" is among the user's roles as per data.user_roles
+user_is_admin if "admin" in data.user_roles[input.user]
+```
+
