@@ -147,4 +147,4 @@ OPA supports different ways to evaluate policies.
 - Custom compilers and evaluators may be written to parse evaluation plans in the low-level Intermediate Representation format, which can be emitted by the opa build command
 - The SDK provides high-level APIs for obtaining the output of query evaluation as simple Go types (bool, string, map[string]interface{}, etc.)
 
-
+https://blog.openpolicyagent.org/partial-evaluation-162750eaf422
