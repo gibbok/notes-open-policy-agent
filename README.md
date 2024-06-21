@@ -77,7 +77,7 @@ Data loaded asynchronously into OPA is cached in-memory so that it can be read e
 
 Simple example:
 
-https://play.openpolicyagent.org/p/FuRtmg698k
+https://play.openpolicyagent.org/p/bw1179qOPn
 
 Input:
 
