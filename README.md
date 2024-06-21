@@ -155,6 +155,8 @@ https://www.openpolicyagent.org/docs/latest/external-data/
 
 ### JWT Tokens
 
+It extract from the jwt token information and evaluate against OPA policy hardcoded in REGO.
+
 - User logs in to an authentication system, e.g. LDAP/AD/etc.
 - The user is given a JWT token encoding group membership and other user attributes stored in LDAP/AD
 - The user provides that JWT token to an OPA-enabled software system for authentication
