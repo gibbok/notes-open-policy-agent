@@ -23,4 +23,15 @@ To install:
 ```shell
 brew install opa
 ```
+You can load policy and data files into the REPL by passing them on the command line. By default, JSON and YAML files are rooted under data.
+
+## Philosophy
+
+A policy is a set of rules that governs the behavior of a software service. That policy could describe rate-limits, names of trusted servers or accounts a user can withdraw money from.
+
+Authorization is a special kind of policy that often dictates which people or machines can run which actions on which resources.
+
+Authorization is sometimes confused with Authentication: how people or machines prove they are who they say they are. Authorization and more generally policy often utilize the results of authentication (the username, user attributes, groups, claims), but makes decisions based on far more information than just who the user is. 
+
+Today policy is often a hard-coded feature of the software service it actually governs. Open Policy Agent lets you decouple policy from that software service so that the people responsible for policy can read, write, analyze, version, distribute, and in general manage policy separate from the service itself.
 
