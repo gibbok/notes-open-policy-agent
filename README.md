@@ -148,3 +148,7 @@ OPA supports different ways to evaluate policies.
 - The SDK provides high-level APIs for obtaining the output of query evaluation as simple Go types (bool, string, map[string]interface{}, etc.)
 
 https://blog.openpolicyagent.org/partial-evaluation-162750eaf422
+
+## External Data
+
+https://www.openpolicyagent.org/docs/latest/external-data/
