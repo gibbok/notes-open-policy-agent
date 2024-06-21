@@ -153,6 +153,8 @@ https://blog.openpolicyagent.org/partial-evaluation-162750eaf422
 
 https://www.openpolicyagent.org/docs/latest/external-data/
 
+https://www.permit.io/blog/load-external-data-into-opa
+
 ### JWT Tokens
 
 It extract from the jwt token information and evaluate against OPA policy hardcoded in REGO.
