@@ -114,10 +114,10 @@ package app.test
 import rego.v1
 
 # By default, deny requests.
-default allow := false
+default allow_user := false
 
 # Allow admins to do anything.
-allow if user_is_admin
+allow_user if user_is_admin
 
 # user_is_admin is true if "admin" is among the user's roles as per data.user_roles
 user_is_admin if "admin" in data.user_roles[input.user]
