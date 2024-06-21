@@ -152,3 +152,19 @@ https://blog.openpolicyagent.org/partial-evaluation-162750eaf422
 ## External Data
 
 https://www.openpolicyagent.org/docs/latest/external-data/
+
+### JWT Tokens
+
+- User logs in to an authentication system, e.g. LDAP/AD/etc.
+- The user is given a JWT token encoding group membership and other user attributes stored in LDAP/AD
+- The user provides that JWT token to an OPA-enabled software system for authentication
+- The OPA-enabled software system includes that token as part of the usual input to OPA.
+- OPA decodes the JWT token and uses the contents to make policy decisions.
+
+
+
+
+
+
+
+
