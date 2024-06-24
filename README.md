@@ -181,35 +181,39 @@ This approach is valuable when the data changes fairly frequently and/or when th
 
 ### Bundle API
 
-When external data changes infrequently and can reasonably be stored in memory all at once, you can replicate that data in bulk via OPA’s bundle feature. The bundle feature periodically downloads policy bundles from a centralized server, which can include data as well as policy. Every time OPA gets updated policies, it gets updated data too. You must implement the bundle server and integrate your external data into the bundle server–OPA does NOT help with that–but once it is done, OPA will happily pull the data (and policies) out of your bundle server.
+When external data changes infrequently and can reasonably be stored in memory all at once, you can replicate that data in bulk via OPA’s bundle feature.
+
+The bundle feature periodically downloads policy bundles from a centralized server, which can include data as well as policy. Every time OPA gets updated policies, it gets updated data too.
+
+You must implement the bundle server and integrate your external data into the bundle server–OPA does NOT help with that–but once it is done, OPA will happily pull the data (and policies) out of your bundle server.
 
 Three things happen independently with this kind of data integration.
 
-A. OPA-enabled software system asks OPA for policy decisions
-B. OPA downloads new policy bundles including external data
-C. Bundle server replicates data from source of truth
+- OPA-enabled software system asks OPA for policy decisions.
+- OPA downloads new policy bundles including external data.
+- Bundle server replicates data from source of truth.
 
-Recommended usage: Static, Medium-sized data
+Recommended usage: Static, Medium-sized data.
 
 ### Pull Data during Evaluation
 
-OPA includes functionality for reaching out to external servers during evaluation. This functionality handles those cases where there is too much data to synchronize into OPA, JWTs are ineffective, or policy requires information that must be as up to date as possible.
+OPA includes functionality for *reaching out to external servers during evaluation*. This functionality handles those cases where there is too much data to synchronize into OPA, JWTs are ineffective, or policy requires information that must be as up to date as possible.
 
-That functionality is implemented using built-in functions such as http.send
+That functionality is implemented using built-in functions such as `http.send`.
 
-The key difference here is that every decision requires contacting the external data source. If that service or the network connection is slow or unavailable, OPA may not be able to return a decision.
+The key difference here is that *every decision requires contacting the external data source*. If that service or the network connection is slow or unavailable, OPA may not be able to return a decision.
 
-OPA-enabled service asks OPA for a decision
-During evaluation OPA asks the external data source for additional information
+- OPA-enabled service asks OPA for a decision.
+- During evaluation OPA asks the external data source for additional information.
 
-Recommended usage: Highly Dynamic or Large-sized data
+Recommended usage: Highly Dynamic or Large-sized data.
 
-The downside to pulling data on demand is reduced performance and availability because of the network, which can be mitigated via caching. In the input case, caching is under the control of the OPA-enabled service and can therefore be tailored to fit the properties of the data. In the http.send case, caching is largely under the control of the remote service that sets HTTP response headers to indicate how long the response can be cached for. It is crucial in this approach for the OPA-enabled service to handle the case when OPA returns no decision.
+The downside to pulling data on demand is *reduced performance and availability because of the network*, which can be mitigated via caching. In the input case, caching is under the control of the OPA-enabled service and can therefore be tailored to fit the properties of the data. In the http.send case, caching is largely under the control of the remote service that sets HTTP response headers to indicate how long the response can be cached for. It is crucial in this approach for the OPA-enabled service to handle the case when OPA returns no decision.
 
 <img width="1376" alt="Screenshot 2024-06-21 at 3 45 16 PM" src="https://github.com/gibbok/notes-open-policy-agent/assets/17195702/74afe2cd-3e04-4a9b-b3c8-c7b155c2cf75">
-
 
 ## Notes:
 
 - When run as a server and configured accordingly, OPA will emit spans to an OpenTelemetry collector via gRPC.
-- OPA exposes an HTTP endpoint that can be used to collect performance metrics for all API calls. The Prometheus endpoint is enabled by default when you run OPA as a server.
+- OPA exposes an HTTP endpoint that can be used to collect performance metrics for all API calls.
+- The Prometheus endpoint is enabled by default when you run OPA as a server.
