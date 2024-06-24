@@ -212,6 +212,8 @@ The downside to pulling data on demand is *reduced performance and availability 
 
 <img width="1376" alt="Screenshot 2024-06-21 at 3 45 16 PM" src="https://github.com/gibbok/notes-open-policy-agent/assets/17195702/74afe2cd-3e04-4a9b-b3c8-c7b155c2cf75">
 
+<https://www.permit.io/blog/load-external-data-into-opa>
+
 ## Notes:
 
 - When run as a server and configured accordingly, OPA will emit spans to an OpenTelemetry collector via gRPC.
